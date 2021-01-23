@@ -1,15 +1,12 @@
 const triggers = document.querySelectorAll('.cool > li');
-// console.log(triggers);
 
 const background = document.querySelector('.dropdownBackground');
-// console.log(background);
 
 const nav = document.querySelector('.top');
-// console.log(nav);
 
 let handleEnter = function(){
     this.classList.add('trigger-enter');
-    setTimeout(() => this.classList.add('trigger-enter-active'), 150);
+    setTimeout(() => this.classList.contains('trigger-enter') && this.classList.add('trigger-enter-active'), 150);
     background.classList.add('open');
 
     const dropDown = this.querySelector('.dropdown');
@@ -18,11 +15,14 @@ let handleEnter = function(){
 
     const coords = {
         height : dropDownCoords.height,
-        width : dropDownCoords.width
+        width : dropDownCoords.width,
+        top : dropDownCoords.top - navCoords .top,
+        left : dropDownCoords.left - navCoords.left
     }
 
     background.style.setProperty('width', `${coords.width}px`);
     background.style.setProperty('height', `${coords.height}px`);
+    background.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px)`);
 }
 
 let handleLeave = function(){
