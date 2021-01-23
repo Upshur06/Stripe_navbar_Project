@@ -8,7 +8,8 @@ const nav = document.querySelector('.top');
 // console.log(nav);
 
 let handleEnter = function(){
-    console.log("ENTER!!!");
+    this.classList.add('trigger-enter');
+    setTimeout(() => this.classList.add('trigger-enter-active'), 150);
 }
 
 let handleLeave = function(){
